@@ -4,9 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre Ciel Étoilé ❤️️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Pour ma Sarah 🤍</title>
+    <!-- Importation de polices élégantes depuis Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-color: #2d3748;
+            --accent-color: #e53e3e;
+            --accent-light: #fff5f5;
+            --gold-color: #d69e2e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,153 +24,175 @@
         }
 
         body {
-            background-color: #05050f;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            height: 100vh;
-            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px;
-        }
-
-        header {
-            text-align: center;
-            z-index: 10;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: #ffd700;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-        }
-
-        p {
-            font-size: 0.95rem;
-            color: #a0a0c0;
-        }
-
-        /* Le Ciel / Zone interactive */
-        .sky {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        .star:hover {
-            transform: scale(2);
-            background-color: #ffd700;
-        }
-
-        /* Fenêtre de message flottante */
-        .message-box {
-            position: relative;
-            z-index: 10;
-            background: rgba(20, 20, 35, 0.85);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 20px 30px;
-            border-radius: 15px;
-            max-width: 500px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            min-height: 100px;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .message-box p {
-            color: #ffffff;
-            font-size: 1.05vrem;
-            line-height: 1.5;
+        /* Effet de cœurs en arrière-plan (générés dynamiquement en JS) */
+        .floating-heart {
+            position: absolute;
+            color: rgba(229, 62, 62, 0.15);
+            animation: floatUp 6s linear infinite;
+            z-index: 0;
+            user-select: none;
         }
 
-        /* Instructions */
-        .instruction {
-            font-size: 0.85rem;
-            color: #ffd700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            z-index: 10;
-            margin-bottom: -10px;
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .badge-months {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(229, 62, 62, 0.2);
+            box-shadow: 0 2px 5px rgba(229, 62, 62, 0.05);
+        }
+
+        .message-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        .message-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight-gold {
+            color: var(--gold-color);
+            font-weight: 600;
+        }
+
+        .signature {
+            margin-top: 35px;
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--accent-color);
+        }
+
+        /* Responsive design pour téléphones */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            .message-content {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Notre Constellation</h1>
-        <p>1 an d'amour gravé dans les étoiles, Sarah.</p>
-    </header>
+    <!-- Conteneur principal de la lettre -->
+    <div class="container">
+        <div class="header">
+            <h1>7 Mois à tes côtés</h1>
+            <div class="badge-months">Mon amour 🤍</div>
+        </div>
 
-    <div class="sky" id="sky"></div>
+        <div class="message-content">
+            <p>Ça fait déjà sept mois qu’on se connaît, mais c’est pas assez. J’espère que Dieu nous permet qu’on reste ensemble pour l’éternité (avec une petite bague sur les doigts hehehe).</p>
+            
+            <p>Je sais très bien que je suis loin d'être quelqu'un de parfait. Je ne suis ni le gars le plus beau, ni le plus charismatique, et j'ai mes défauts. Mais ce que je te promets, c'est que je ferai tout pour être l'homme qui te donne du bonheur au quotidien.</p>
+            
+            <p>Quand je regarde tout ce qu'on a traversé, je me rends compte de la chance immense que j'ai. Ton amour, je le reçois à 1000 %. Tu es une femme tellement incroyable et parfaite pour moi. Tu veux toujours avancer avec moi, ça montre à quel point tu m'aimes vraiment, et je ne te remercierai jamais assez pour ça. Sur ma vie wAllah que jamais j’oublierai ça et je te le montrerai chaque jour.</p>
+            
+            <p>Je veux que tu saches que je ne prends rien de tout ça pour acquis. Je veux vraiment cette vie avec toi. Je veux avancer que avec toi, parce que sans toi, je serai au point mort.</p>
+            
+            <p>Oublie pas la femme que tu es. Quand je te regarde, je vois une beauté incroyable, de celles qui illuminent tout autour d'elles. Tu es belle, tout simplement, dans ton sourire, dans ton regard, et dans chacune de tes facettes. Il n'y a pas un jour où je ne me trouve pas chanceux d'avoir une copine aussi sublime à mes côtés.</p>
+            
+            <p>Mais ce qu'il y a d'encore plus fort, c'est que cette beauté extérieure, elle est pareille à l'intérieur. Tu as <span class="highlight-gold">un cœur en or</span>, une gentillesse rare et une lumière qui me touche au plus profond de moi. Tu es belle de partout, et c'est ce qui fait que je suis complètement fou de toi.</p>
+        </div>
 
-    <div class="instruction">Clique sur les étoiles scintillantes pour lire nos souvenirs</div>
-
-    <div class="message-box">
-        <p id="memory-text">Chaque étoile de ce ciel représente un moment magique partagé à tes côtés depuis un an. Clique sur l'une d'elles pour commencer le voyage...</p>
+        <div class="signature">
+            Ton homme
+        </div>
     </div>
 
+    <!-- Script JavaScript pour animer de petits cœurs en fond -->
     <script>
-        // Liste des souvenirs cachés dans les étoiles
-        const memories = [
-            "Le premier jour : Ce regard qui a tout basculé et qui a fait de toi mon évidence.",
-            "Nos fous rires interminables : Ces moments où on rit pour rien, juste parce qu'on est ensemble.",
-            "Nos projets et nos rêves : Regarder dans la même direction et construire l'avenir.",
-            "Le quotidien : Même les jours ordinaires deviennent extraordinaires quand tu es là.",
-            "Aujourd'hui - 1 An : 365 jours de bonheur pur. Et ce n'est que le tout début de notre histoire. Je t'aime, Sarah ❤️"
-        ];
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            document.body.appendChild(heart);
 
-        const sky = document.getElementById("sky");
-        const memoryText = document.getElementById("memory-text");
-
-        // Générer un ciel étoilé aléatoire
-        const starCount = 40;
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement("div");
-            star.className = "star";
-            
-            const x = Math.random() * 90 + 5; // position en %
-            const y = Math.random() * 70 + 15;
-            const size = Math.random() * 4 + 2; // taille entre 2 et 6px
-            
-            star.style.left = x + "vw";
-            star.style.top = y + "vh";
-            star.style.width = size + "px";
-            star.style.height = size + "px";
-            
-            // Effet de scintillement aléatoire
-            star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
-
-            // Assigner un souvenir aléatoire ou séquentiel au clic
-            const randomMemory = memories[Math.floor(Math.random() * memories.length)];
-            star.onclick = () => {
-                memoryText.style.opacity = 0;
-                setTimeout(() => {
-                    memoryText.innerText = randomMemory;
-                    memoryText.style.opacity = 1;
-                }, 200);
-            };
-
-            sky.appendChild(star);
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
         }
+
+        // Crée un cœur toutes les 400 millisecondes
+        setInterval(createHeart, 400);
     </script>
 </body>
 </html>
